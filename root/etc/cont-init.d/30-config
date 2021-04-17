@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv bash
+
+mkdir -p /config/logs/endlessh
+
+if [ "${LOGFILE}" != "true" ]; then
+    echo "**** Logging to container log ****"
+    rm -rf /etc/services.d/endlessh/log
+else
+    echo "**** Logging to /config/logs/endlessh/ ****"
+fi
+
+# permissions
+chown -R abc:abc \
+    /config \
