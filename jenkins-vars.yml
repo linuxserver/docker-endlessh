@@ -1,0 +1,31 @@
+---
+
+# jenkins variables
+project_name: docker-endlessh
+external_type: github_devel
+release_type: stable
+release_tag: latest
+ls_branch: main
+repo_vars:
+  - EXT_GIT_BRANCH = 'master'
+  - EXT_USER = 'skeeto'
+  - EXT_REPO = 'endlessh'
+  - CONTAINER_NAME = 'endlessh'
+  - BUILD_VERSION_ARG = 'ENDLESSH_RELEASE'
+  - LS_USER = 'linuxserver'
+  - LS_REPO = 'docker-endlessh'
+  - DOCKERHUB_IMAGE = 'linuxserver/endlessh'
+  - DEV_DOCKERHUB_IMAGE = 'lsiodev/endlessh'
+  - PR_DOCKERHUB_IMAGE = 'lspipepr/endlessh'
+  - DIST_IMAGE = 'alpine'
+  - MULTIARCH='true'
+  - CI='true'
+  - CI_WEB='false'
+  - CI_PORT='8080'
+  - CI_SSL='false'
+  - CI_DELAY='120'
+  - CI_DOCKERENV='TZ=US/Pacific'
+  - CI_AUTH='user:password'
+  - CI_WEBPATH='/'
+sponsor_links:
+  - { name: "Endlessh", url: "https://secure.givewell.org/" }

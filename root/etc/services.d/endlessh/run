@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+export \
+    MSDELAY=${MSDELAY:-10000} \
+    MAXLINE=${MAXLINE:-32} \
+    MAXCLIENTS=${MAXCLIENTS:-4096}
+
+exec 2>&1 \
+    s6-setuidgid abc \
+        /app/endlessh/endlessh \
+        -v \
+        -d ${MSDELAY} \
+        -l ${MAXLINE} \
+        -m ${MAXCLIENTS} \
+        -p 2222
