@@ -40,6 +40,7 @@ Find us at:
 [![LSIO CI](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.linuxserver.io%2Flinuxserver%2Fendlessh%2Flatest%2Fci-status.yml)](https://ci-tests.linuxserver.io/linuxserver/endlessh/latest/index.html)
 
 [Endlessh](https://github.com/skeeto/endlessh) Endlessh is an SSH tarpit that very slowly sends an endless, random SSH banner. It keeps SSH clients locked up for hours or even days at a time. The purpose is to put your real SSH server on another port and then let the script kiddies get stuck in this tarpit instead of bothering a real server.
+
 [![endlessh](https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/openssh-server-logo.png)](https://github.com/skeeto/endlessh)
 
 ## Supported Architectures
