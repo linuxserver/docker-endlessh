@@ -101,23 +101,23 @@ pipeline {
     /* ########################
        External Release Tagging
        ######################## */
-    // If this is a devel github release use the first in an array from github to determine the ext tag
-    stage("Set ENV github_devel"){
-      steps{
-        script{
-          env.EXT_RELEASE = sh(
-            script: '''curl -H "Authorization: token ${GITHUB_TOKEN}" -s https://api.github.com/repos/${EXT_USER}/${EXT_REPO}/releases | jq -r '.[0] | .tag_name' ''',
-            returnStdout: true).trim()
-        }
-      }
+    // If this is a github commit trigger determine the current commit at head
+    stage("Set ENV github_commit"){
+     steps{
+       script{
+         env.EXT_RELEASE = sh(
+           script: '''curl -H "Authorization: token ${GITHUB_TOKEN}" -s https://api.github.com/repos/${EXT_USER}/${EXT_REPO}/commits/${EXT_GIT_BRANCH} | jq -r '. | .sha' | cut -c1-8 ''',
+           returnStdout: true).trim()
+       }
+     }
     }
-    // If this is a stable or devel github release generate the link for the build message
-    stage("Set ENV github_link"){
-      steps{
-        script{
-          env.RELEASE_LINK = 'https://github.com/' + env.EXT_USER + '/' + env.EXT_REPO + '/releases/tag/' + env.EXT_RELEASE
-        }
-      }
+    // If this is a github commit trigger Set the external release link
+    stage("Set ENV commit_link"){
+     steps{
+       script{
+         env.RELEASE_LINK = 'https://github.com/' + env.EXT_USER + '/' + env.EXT_REPO + '/commit/' + env.EXT_RELEASE
+       }
+     }
     }
     // Sanitize the release tag and strip illegal docker or github characters
     stage("Sanitize tag"){
@@ -800,7 +800,7 @@ pipeline {
              "tagger": {"name": "LinuxServer Jenkins","email": "jenkins@linuxserver.io","date": "'${GITHUB_DATE}'"}}' '''
         echo "Pushing New release for Tag"
         sh '''#! /bin/bash
-              curl -H "Authorization: token ${GITHUB_TOKEN}" -s https://api.github.com/repos/${EXT_USER}/${EXT_REPO}/releases | jq '.[0] |.body' | sed 's:^.\\(.*\\).$:\\1:' > releasebody.json
+              curl -H "Authorization: token ${GITHUB_TOKEN}" -s https://api.github.com/repos/${EXT_USER}/${EXT_REPO}/commits/${EXT_RELEASE_CLEAN} | jq '.commit.message' | sed 's:^.\\(.*\\).$:\\1:' > releasebody.json
               echo '{"tag_name":"'${META_TAG}'",\
                      "target_commitish": "main",\
                      "name": "'${META_TAG}'",\

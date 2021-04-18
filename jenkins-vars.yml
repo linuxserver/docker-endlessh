@@ -2,7 +2,7 @@
 
 # jenkins variables
 project_name: docker-endlessh
-external_type: github_devel
+external_type: github_commit
 release_type: stable
 release_tag: latest
 ls_branch: main
