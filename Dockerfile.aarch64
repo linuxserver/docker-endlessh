@@ -15,8 +15,8 @@ RUN \
     jq && \
   echo "**** fetch source code ****" && \
   if [ -z ${ENDLESSH_RELEASE+x} ]; then \
-    ENDLESSH_RELEASE=$(curl -sX GET "https://api.github.com/repos/skeeto/endlessh/releases" \
-      | jq -r '.[0] | .tag_name'); \
+    ENDLESSH_RELEASE=$(curl -sX GET "https://api.github.com/repos/skeeto/endlessh/commits/master" \
+      | jq -r '.sha' | cut -c1-8); \
   fi && \
   mkdir -p /app/endlessh && \
   curl -o \
