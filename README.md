@@ -39,7 +39,7 @@ Find us at:
 [![Jenkins Build](https://img.shields.io/jenkins/build?labelColor=555555&logoColor=ffffff&style=for-the-badge&jobUrl=https%3A%2F%2Fci.linuxserver.io%2Fjob%2FDocker-Pipeline-Builders%2Fjob%2Fdocker-endlessh%2Fjob%2Fmain%2F&logo=jenkins)](https://ci.linuxserver.io/job/Docker-Pipeline-Builders/job/docker-endlessh/job/main/)
 [![LSIO CI](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=CI&query=CI&url=https%3A%2F%2Fci-tests.linuxserver.io%2Flinuxserver%2Fendlessh%2Flatest%2Fci-status.yml)](https://ci-tests.linuxserver.io/linuxserver/endlessh/latest/index.html)
 
-[Endlessh](https://github.com/skeeto/endlessh) Endlessh is an SSH tarpit that very slowly sends an endless, random SSH banner. It keeps SSH clients locked up for hours or even days at a time. The purpose is to put your real SSH server on another port and then let the script kiddies get stuck in this tarpit instead of bothering a real server.
+[Endlessh](https://github.com/skeeto/endlessh) is an SSH tarpit that very slowly sends an endless, random SSH banner. It keeps SSH clients locked up for hours or even days at a time. The purpose is to put your real SSH server on another port and then let the script kiddies get stuck in this tarpit instead of bothering a real server.
 
 [![endlessh](https://github.com/linuxserver/docker-templates/raw/master/linuxserver.io/img/openssh-server-logo.png)](https://github.com/skeeto/endlessh)
 
@@ -122,7 +122,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e MSDELAY=10000` | The endless banner is sent one line at a time. This is the delay in milliseconds between individual lines. |
 | `-e MAXLINES=32` | The length of each line is randomized. This controls the maximum length of each line. Shorter lines may keep clients on for longer if they give up after a certain number of bytes. |
 | `-e MAXCLIENTS=4096` | Maximum number of connections to accept at a time. Connections beyond this are not immediately rejected, but will wait in the queue. |
-| `-e LOGFILE=false` | By default, the app logs to container log. If this is set to `true`, the log will be output to file under `/config.logs/endlessh` (`/config` needs to be mapped). |
+| `-e LOGFILE=false` | By default, the app logs to container log. If this is set to `true`, the log will be output to file under `/config/logs/endlessh` (`/config` needs to be mapped). |
 | `-v /config` | Required if `LOGFILE` is set to `true`. |
 
 ## Environment variables from files (Docker secrets)
