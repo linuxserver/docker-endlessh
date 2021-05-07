@@ -38,6 +38,7 @@ opt_param_env_vars:
   - { env_var: "MAXLINES", env_value: "32", desc: "The length of each line is randomized. This controls the maximum length of each line. Shorter lines may keep clients on for longer if they give up after a certain number of bytes." }
   - { env_var: "MAXCLIENTS", env_value: "4096", desc: "Maximum number of connections to accept at a time. Connections beyond this are not immediately rejected, but will wait in the queue." }
   - { env_var: "LOGFILE", env_value: "false", desc: "By default, the app logs to container log. If this is set to `true`, the log will be output to file under `/config/logs/endlessh` (`/config` needs to be mapped)." }
+  - { env_var: "BINDFAMILY", env_value: "-4", desc: "By default, the app binds to IPv4 and IPv6 addresses. Set it to `-4` or `-6` for binding to IPv4 or IPv6 only." }
 opt_param_usage_include_vols: true
 opt_param_volumes:
   - { vol_path: "/config", vol_host_path: "/path/to/appdata", desc: "Required if `LOGFILE` is set to `true`." }
@@ -54,3 +55,4 @@ app_setup_block: |
 # changelog
 changelogs:
   - { date: "16.04.21:", desc: "Initial Release." }
+  - { date: "07.05.21:", desc: "Added BINDFAMILY option." }

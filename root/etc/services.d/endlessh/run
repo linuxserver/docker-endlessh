@@ -3,7 +3,8 @@
 export \
     MSDELAY=${MSDELAY:-10000} \
     MAXLINE=${MAXLINE:-32} \
-    MAXCLIENTS=${MAXCLIENTS:-4096}
+    MAXCLIENTS=${MAXCLIENTS:-4096} \
+    BINDFAMILY=${BINDFAMILY:-}
 
 exec 2>&1 \
     s6-setuidgid abc \
@@ -12,4 +13,5 @@ exec 2>&1 \
         -d ${MSDELAY} \
         -l ${MAXLINE} \
         -m ${MAXCLIENTS} \
-        -p 2222
+        -p 2222 \
+        ${BINDFAMILY}
