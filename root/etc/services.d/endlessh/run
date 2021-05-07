@@ -4,7 +4,7 @@ export \
     MSDELAY=${MSDELAY:-10000} \
     MAXLINE=${MAXLINE:-32} \
     MAXCLIENTS=${MAXCLIENTS:-4096} \
-    BINDFAMILY=${BINDFAMILY:-}
+    BINDFAMILY=$(test v4 = v${BINDFAMILY} -o v6 = v${BINDFAMILY} && echo -${BINDFAMILY})
 
 exec 2>&1 \
     s6-setuidgid abc \
