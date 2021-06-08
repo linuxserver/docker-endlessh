@@ -84,6 +84,7 @@ services:
       - MAXLINES=32 #optional
       - MAXCLIENTS=4096 #optional
       - LOGFILE=false #optional
+      - BINDFAMILY= #optional
     volumes:
       - /path/to/appdata:/config #optional
     ports:
@@ -103,6 +104,7 @@ docker run -d \
   -e MAXLINES=32 `#optional` \
   -e MAXCLIENTS=4096 `#optional` \
   -e LOGFILE=false `#optional` \
+  -e BINDFAMILY= `#optional` \
   -p 22:2222 \
   -v /path/to/appdata:/config `#optional` \
   --restart unless-stopped \
@@ -123,6 +125,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e MAXLINES=32` | The length of each line is randomized. This controls the maximum length of each line. Shorter lines may keep clients on for longer if they give up after a certain number of bytes. |
 | `-e MAXCLIENTS=4096` | Maximum number of connections to accept at a time. Connections beyond this are not immediately rejected, but will wait in the queue. |
 | `-e LOGFILE=false` | By default, the app logs to container log. If this is set to `true`, the log will be output to file under `/config/logs/endlessh` (`/config` needs to be mapped). |
+| `-e BINDFAMILY=` | By default, the app binds to IPv4 and IPv6 addresses. Set it to `4` or `6` to bind to IPv4 only or IPv6 only, respectively. Leave blank to bind to both. |
 | `-v /config` | Required if `LOGFILE` is set to `true`. |
 
 ## Environment variables from files (Docker secrets)
@@ -234,4 +237,5 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **08.06.21:** - Add BINDFAMILY option.
 * **16.04.21:** - Initial Release.
