@@ -2,7 +2,7 @@
 
 export \
     MSDELAY=${MSDELAY:-10000} \
-    MAXLINE=${MAXLINE:-32} \
+    MAXLINES=${MAXLINES:-32} \
     MAXCLIENTS=${MAXCLIENTS:-4096} \
     BINDFAMILY=$(test v4 = v${BINDFAMILY} -o v6 = v${BINDFAMILY} && echo -${BINDFAMILY})
 
@@ -11,7 +11,7 @@ exec 2>&1 \
         /app/endlessh/endlessh \
         -v \
         -d ${MSDELAY} \
-        -l ${MAXLINE} \
+        -l ${MAXLINES} \
         -m ${MAXCLIENTS} \
         -p 2222 \
         ${BINDFAMILY}
