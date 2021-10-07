@@ -235,5 +235,6 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **07.10.21:** - Fix typo on MAXLINES var.
 * **08.06.21:** - Add BINDFAMILY option.
 * **16.04.21:** - Initial Release.

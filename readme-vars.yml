@@ -54,5 +54,6 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "07.10.21:", desc: "Fix typo on MAXLINES var." }
   - { date: "08.06.21:", desc: "Add BINDFAMILY option." }
   - { date: "16.04.21:", desc: "Initial Release." }
