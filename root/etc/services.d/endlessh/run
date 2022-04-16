@@ -14,4 +14,4 @@ exec 2>&1 \
         -l "${MAXLINES}" \
         -m "${MAXCLIENTS}" \
         -p 2222 \
-        "${BINDFAMILY}"
+        ${BINDFAMILY}
