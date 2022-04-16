@@ -4,14 +4,14 @@ export \
     MSDELAY=${MSDELAY:-10000} \
     MAXLINES=${MAXLINES:-32} \
     MAXCLIENTS=${MAXCLIENTS:-4096} \
-    BINDFAMILY=$(test v4 = v${BINDFAMILY} -o v6 = v${BINDFAMILY} && echo -${BINDFAMILY})
+    BINDFAMILY=$(test v4 = v"${BINDFAMILY}" -o v6 = v"${BINDFAMILY}" && echo -"${BINDFAMILY}")
 
 exec 2>&1 \
     s6-setuidgid abc \
         /app/endlessh/endlessh \
         -v \
-        -d ${MSDELAY} \
-        -l ${MAXLINES} \
-        -m ${MAXCLIENTS} \
+        -d "${MSDELAY}" \
+        -l "${MAXLINES}" \
+        -m "${MAXCLIENTS}" \
         -p 2222 \
-        ${BINDFAMILY}
+        "${BINDFAMILY}"
