@@ -1,0 +1,18 @@
+#!/usr/bin/with-contenv bash
+
+export \
+    MSDELAY=${MSDELAY:-10000} \
+    MAXLINES=${MAXLINES:-32} \
+    MAXCLIENTS=${MAXCLIENTS:-4096} \
+    BINDFAMILY=$(test v4 = v"${BINDFAMILY}" -o v6 = v"${BINDFAMILY}" && echo -"${BINDFAMILY}")
+
+exec 2>&1 \
+    s6-notifyoncheck -d -n 60 -w 5000 -c "nc -z 127.0.0.1 2222" \
+        s6-setuidgid abc \
+            /app/endlessh/endlessh \
+            -v \
+            -d "${MSDELAY}" \
+            -l "${MAXLINES}" \
+            -m "${MAXCLIENTS}" \
+            -p 2222 \
+            ${BINDFAMILY}

@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bash
+
+mkdir -p /config/logs/endlessh
+
+if [ "${LOGFILE}" == "true" ]; then
+    mkdir -p /config/logs/endlessh
+fi
+
+# permissions
+chown -R abc:abc \
+    /config \
