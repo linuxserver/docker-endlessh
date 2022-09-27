@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+
+if [ "${LOGFILE}" == "true" ]; then
+    exec \
+        s6-setuidgid abc s6-log n30 s1000000 S30000000 T !"gzip -nq9" /config/logs/endlessh
+else
+    exec \
+        s6-setuidgid abc s6-log +.* 1
+fi
