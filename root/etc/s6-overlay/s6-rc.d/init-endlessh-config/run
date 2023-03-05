@@ -1,9 +1,10 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
-if [ "${LOGFILE}" == "true" ]; then
+if [[ "${LOGFILE}" == "true" ]]; then
     mkdir -p /config/logs/endlessh
 fi
 
 # permissions
-chown -R abc:abc \
+lsiown -R abc:abc \
     /config \

@@ -54,6 +54,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "05.03.23:", desc: "Rebase to Alpine 3.17." }
   - { date: "23.09.22:", desc: "Migrate to s6v3." }
   - { date: "20.07.22:", desc: "Rebase to Alpine 3.16." }
   - { date: "16.04.22:", desc: "Rebase to Alpine 3.15." }
