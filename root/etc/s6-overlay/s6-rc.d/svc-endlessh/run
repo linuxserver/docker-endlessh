@@ -1,4 +1,5 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
 export \
     MSDELAY=${MSDELAY:-10000} \
@@ -7,7 +8,7 @@ export \
     BINDFAMILY=$(test v4 = v"${BINDFAMILY}" -o v6 = v"${BINDFAMILY}" && echo -"${BINDFAMILY}")
 
 exec 2>&1 \
-    s6-notifyoncheck -d -n 60 -w 5000 -c "nc -z 127.0.0.1 2222" \
+    s6-notifyoncheck -d -n 60 -w 5000 -c "nc -z localhost 2222" \
         s6-setuidgid abc \
             /app/endlessh/endlessh \
             -v \
