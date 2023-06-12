@@ -11,12 +11,9 @@ project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_
 available_architectures:
   - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
   - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
-  - { arch: "{{ arch_armhf }}", tag: "arm32v7-latest"}
 
 # development version
 development_versions: false
-development_versions_items:
-  - { tag: "latest", desc: "Stable releases" }
 
 # container parameters
 common_param_env_vars_enabled: true
@@ -43,10 +40,6 @@ opt_param_usage_include_vols: true
 opt_param_volumes:
   - { vol_path: "/config", vol_host_path: "/path/to/appdata", desc: "Required if `LOGFILE` is set to `true`." }
 
-
-optional_block_1: false
-optional_block_1_items: ""
-
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
@@ -54,6 +47,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "12.06.23:", desc: "Rebase to Alpine 3.18, deprecate armhf." }
   - { date: "05.03.23:", desc: "Rebase to Alpine 3.17." }
   - { date: "23.09.22:", desc: "Migrate to s6v3." }
   - { date: "20.07.22:", desc: "Rebase to Alpine 3.16." }
