@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM ghcr.io/linuxserver/baseimage-alpine:3.17
+FROM ghcr.io/linuxserver/baseimage-alpine:3.18
 
 # set version label
 ARG BUILD_DATE
@@ -16,7 +16,7 @@ RUN \
   echo "**** fetch source code ****" && \
   if [ -z ${ENDLESSH_RELEASE+x} ]; then \
     ENDLESSH_RELEASE=$(curl -sX GET "https://api.github.com/repos/skeeto/endlessh/commits/master" \
-      | jq -r '.sha' | cut -c1-8); \
+    | jq -r '.sha' | cut -c1-8); \
   fi && \
   mkdir -p /app/endlessh && \
   curl -o \
@@ -32,7 +32,7 @@ RUN \
   apk del --purge \
     build-dependencies && \
   rm -rf \
-    /root/.cache \
+    $HOME/.cache \
     /tmp/*
 
 # add local files
