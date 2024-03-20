@@ -1,3 +1,8 @@
+# This image is deprecated. We will not offer support for this image and it will not be updated.
+
+We recommend looking at an alternative implementation such as:
+https://github.com/shizunge/endlessh-go/
+
 <!--- Provide a general summary of your changes in the Title above -->
 
 [linuxserverurl]: https://linuxserver.io

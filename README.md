@@ -26,6 +26,11 @@ Find us at:
 * [GitHub](https://github.com/linuxserver) - view the source for all of our repositories.
 * [Open Collective](https://opencollective.com/linuxserver) - please consider helping us by either donating or contributing to our budget
 
+# This image is deprecated. We will not offer support for this image and it will not be updated.
+
+We recommend looking at an alternative implementation such as:
+https://github.com/shizunge/endlessh-go/
+
 # [linuxserver/endlessh](https://github.com/linuxserver/docker-endlessh)
 
 [![Scarf.io pulls](https://scarf.sh/installs-badge/linuxserver-ci/linuxserver%2Fendlessh?color=94398d&label-color=555555&logo-color=ffffff&style=for-the-badge&package-type=docker)](https://scarf.sh/gateway/linuxserver-ci/docker/linuxserver%2Fendlessh)
@@ -83,7 +88,7 @@ services:
       - LOGFILE=false #optional
       - BINDFAMILY= #optional
     volumes:
-      - /path/to/appdata:/config #optional
+      - /path/to/endlessh/appdata:/config #optional
     ports:
       - 22:2222
     restart: unless-stopped
@@ -103,7 +108,7 @@ docker run -d \
   -e LOGFILE=false `#optional` \
   -e BINDFAMILY= `#optional` \
   -p 22:2222 \
-  -v /path/to/appdata:/config `#optional` \
+  -v /path/to/endlessh/appdata:/config `#optional` \
   --restart unless-stopped \
   lscr.io/linuxserver/endlessh:latest
 ```
@@ -286,6 +291,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **20.03.24:** - Deprecate image.
 * **12.06.23:** - Rebase to Alpine 3.18, deprecate armhf.
 * **05.03.23:** - Rebase to Alpine 3.17.
 * **23.09.22:** - Migrate to s6v3.
